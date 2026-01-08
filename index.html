@@ -45,7 +45,12 @@
     </script>
 
     <style>
-        /* Animação Ouro Vivo */
+        /* CSS para garantir o scroll suave nativo */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animação Ouro Vivo (Apenas para botões agora) */
         @keyframes shimmer {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -116,12 +121,12 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 px-4 md:px-8 border-b border-transparent">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             
-            <a href="#" class="flex items-center group relative z-50">
+            <a href="#" onclick="scrollToTop(event)" class="flex items-center group relative z-50 cursor-pointer">
                 <img src="img/logo.svg" alt="Ed Registro de Marcas" class="h-32 md:h-48 -my-10 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md">
             </a>
             
-            <div class="hidden md:flex items-center space-x-2 lg:space-x-6 text-[10px] lg:text-[11px] font-bold uppercase tracking-wider text-gray-600 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/50 shadow-sm ml-auto z-40">
-                <a href="#inicio" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Início</a>
+            <div class="hidden md:flex items-center space-x-2 lg:space-x-6 text-[10px] lg:text-[11px] font-bold uppercase tracking-wider text-gray-600 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/50 shadow-sm ml-auto z-40">
+                <a href="#inicio" onclick="scrollToTop(event)" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2 cursor-pointer">Início</a>
                 <a href="#diferenciais" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Diferenciais</a>
                 <a href="#como-funciona" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Processo</a>
                 <a href="#planos" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Planos</a>
@@ -132,8 +137,8 @@
                 </button>
             </div>
 
-            <div class="md:hidden flex items-center z-50">
-                 <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-3 py-2 rounded-full font-extrabold shadow-md text-[10px] uppercase tracking-wide">
+            <div class="md:hidden flex items-center z-50 ml-auto">
+                 <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-4 py-2 rounded-full font-extrabold shadow-md text-[10px] uppercase tracking-wide">
                     CONSULTORIA
                 </button>
             </div>
@@ -152,7 +157,7 @@
             </div>
             
             <h1 data-aos="fade-up" data-aos-duration="1200" class="text-4xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
-                PROTEJA A <br class="hidden md:block">IDENTIDADE DA <br><span class="text-gradient-anim">SUA EMPRESA.</span>
+                PROTEJA A <br class="hidden md:block">IDENTIDADE DA <br>SUA EMPRESA.
             </h1>
             
             <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200" class="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
@@ -182,10 +187,11 @@
                 <h3 class="text-gray-900 font-bold text-lg mb-3">Agilidade Tecnológica</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">Processos otimizados para protocolo rápido, evitando que outros registrem na frente.</p>
             </div>
+            
             <div data-aos="fade-up" data-aos-delay="200" class="p-8 rounded-3xl bg-light-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gold-200 group">
                 <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition duration-500">📍</div>
-                <h3 class="text-gray-900 font-bold text-lg mb-3">Foco em Pernambuco</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Entendemos a realidade das pequenas e médias empresas da nossa região.</p>
+                <h3 class="text-gray-900 font-bold text-lg mb-3">Foco no Nordeste</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Estamos em Recife e entendemos a realidade das pequenas e médias empresas da nossa região.</p>
             </div>
         </div>
     </section>
@@ -198,7 +204,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                
                 <div style="animation-delay: 0s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
                     <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">01</span>
                     <div class="relative z-10">
@@ -206,7 +211,6 @@
                         <p class="text-sm text-gray-500">Verificamos a disponibilidade do nome e do logotipo no INPI.</p>
                     </div>
                 </div>
-
                 <div style="animation-delay: 1.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
                     <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">02</span>
                     <div class="relative z-10">
@@ -214,7 +218,6 @@
                         <p class="text-sm text-gray-500">Assinatura digital e pagamento facilitado da entrada.</p>
                     </div>
                 </div>
-
                 <div style="animation-delay: 3s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
                     <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">03</span>
                     <div class="relative z-10">
@@ -222,7 +225,6 @@
                         <p class="text-sm text-gray-500">Entrada no pedido em até 3 dias úteis após a assinatura.</p>
                     </div>
                 </div>
-
                 <div style="animation-delay: 4.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
                     <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">04</span>
                     <div class="relative z-10">
@@ -436,6 +438,7 @@
         let currentAction = '';
         let currentPlanName = '';
 
+        // Funções do Modal
         function openModal(action, planName = '') {
             currentAction = action;
             currentPlanName = planName;
@@ -513,6 +516,15 @@
                 // Se não digitou, abre o modal
                 openModal('search');
             }
+        }
+        
+        // Função de Scroll Suave para o Topo
+        function scrollToTop(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
