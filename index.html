@@ -113,30 +113,34 @@
 </head>
 <body class="bg-light-50 text-gray-800 font-sans overflow-x-hidden selection:bg-gold-500 selection:text-white">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 px-6 border-b border-transparent">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 px-4 md:px-8 border-b border-transparent">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
+            
             <a href="#" class="flex items-center group relative z-50">
                 <img src="img/logo.svg" alt="Ed Registro de Marcas" class="h-32 md:h-48 -my-10 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md">
             </a>
             
-            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-600">
-                <a href="#inicio" class="hover:text-gold-600 transition-colors">Início</a>
-                <a href="#diferenciais" class="hover:text-gold-600 transition-colors">Diferenciais</a>
-                <a href="#como-funciona" class="hover:text-gold-600 transition-colors">Processo</a>
-                <a href="#planos" class="hover:text-gold-600 transition-colors">Planos</a>
-                <a href="#faq" class="hover:text-gold-600 transition-colors">Dúvidas</a>
-                <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-8 py-3 rounded-full font-extrabold hover:scale-105 hover:shadow-gold transition-all duration-300 shadow-md">
+            <div class="hidden md:flex items-center space-x-2 lg:space-x-6 text-[10px] lg:text-[11px] font-bold uppercase tracking-wider text-gray-600 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/50 shadow-sm ml-auto z-40">
+                <a href="#inicio" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Início</a>
+                <a href="#diferenciais" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Diferenciais</a>
+                <a href="#como-funciona" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Processo</a>
+                <a href="#planos" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Planos</a>
+                <a href="#faq" class="hover:text-gold-600 transition-colors whitespace-nowrap px-2">Dúvidas</a>
+                
+                <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-4 lg:px-6 py-2 rounded-full font-extrabold hover:scale-105 hover:shadow-gold transition-all duration-300 shadow-md whitespace-nowrap text-[10px] lg:text-xs">
                     CONSULTORIA
                 </button>
             </div>
 
-            <button onclick="openModal('consultoria')" class="md:hidden text-gold-600 font-bold border border-gold-500 rounded-lg px-4 py-2 text-xs uppercase">
-                WhatsApp
-            </button>
+            <div class="md:hidden flex items-center z-50">
+                 <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-3 py-2 rounded-full font-extrabold shadow-md text-[10px] uppercase tracking-wide">
+                    CONSULTORIA
+                </button>
+            </div>
         </div>
     </nav>
 
-    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 bg-light-50">
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-32 md:pt-44 bg-light-50">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/20 rounded-full blur-[100px] float"></div>
             <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gray-200/50 rounded-full blur-[120px] float-delayed"></div>
@@ -193,26 +197,38 @@
                 <p class="text-gold-600 font-bold text-xs uppercase tracking-[0.3em]">Procedimento Interno Simplificado</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6 relative z-10">
-                <div style="animation-delay: 0s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
-                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">01</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Análise</h3>
-                    <p class="text-sm text-gray-500">Verificamos a disponibilidade do nome e do logotipo no INPI.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                
+                <div style="animation-delay: 0s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
+                    <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">01</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Análise</h3>
+                        <p class="text-sm text-gray-500">Verificamos a disponibilidade do nome e do logotipo no INPI.</p>
+                    </div>
                 </div>
-                <div style="animation-delay: 1.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
-                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">02</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Contrato</h3>
-                    <p class="text-sm text-gray-500">Assinatura digital e pagamento facilitado da entrada.</p>
+
+                <div style="animation-delay: 1.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
+                    <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">02</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Contrato</h3>
+                        <p class="text-sm text-gray-500">Assinatura digital e pagamento facilitado da entrada.</p>
+                    </div>
                 </div>
-                <div style="animation-delay: 3s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
-                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">03</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Protocolo</h3>
-                    <p class="text-sm text-gray-500">Entrada no pedido em até 3 dias úteis após a assinatura.</p>
+
+                <div style="animation-delay: 3s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
+                    <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">03</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Protocolo</h3>
+                        <p class="text-sm text-gray-500">Entrada no pedido em até 3 dias úteis após a assinatura.</p>
+                    </div>
                 </div>
-                <div style="animation-delay: 4.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
-                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">04</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Concessão</h3>
-                    <p class="text-sm text-gray-500">Acompanhamos todo o processo até a entrega do certificado.</p>
+
+                <div style="animation-delay: 4.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200 relative overflow-hidden">
+                    <span class="text-6xl font-black text-gray-100 absolute top-2 right-4 z-0">04</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Concessão</h3>
+                        <p class="text-sm text-gray-500">Acompanhamos todo o processo até a entrega do certificado.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -356,7 +372,7 @@
                     <span class="text-xs font-bold uppercase tracking-widest">WhatsApp</span>
                 </button>
 
-                <a href="mailto:Edregistrodemarca@gmail.com" class="flex items-center gap-3 px-6 py-3 bg-white border border-gold-500 rounded-full text-gold-600 hover:bg-gold-500 hover:text-white transition-all group w-64 justify-center shadow-lg shadow-gold-500/10">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Edregistrodemarca@gmail.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-white border border-gold-500 rounded-full text-gold-600 hover:bg-gold-500 hover:text-white transition-all group w-64 justify-center shadow-lg shadow-gold-500/10">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
                     <span class="text-xs font-bold uppercase tracking-widest">Enviar E-mail</span>
                 </a>
@@ -404,11 +420,11 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav.classList.add('bg-white/90', 'backdrop-blur-xl', 'border-gray-100', 'shadow-md');
-                nav.classList.remove('border-transparent', 'py-6');
-                nav.classList.add('py-4');
+                nav.classList.remove('border-transparent', 'py-3');
+                nav.classList.add('py-2');
             } else {
-                nav.classList.remove('bg-white/90', 'backdrop-blur-xl', 'border-gray-100', 'shadow-md', 'py-4');
-                nav.classList.add('border-transparent', 'py-6');
+                nav.classList.remove('bg-white/90', 'backdrop-blur-xl', 'border-gray-100', 'shadow-md', 'py-2');
+                nav.classList.add('border-transparent', 'py-3');
             }
         });
 
@@ -420,7 +436,6 @@
         let currentAction = '';
         let currentPlanName = '';
 
-        // Funções do Modal
         function openModal(action, planName = '') {
             currentAction = action;
             currentPlanName = planName;
