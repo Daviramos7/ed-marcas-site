@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ed Registro de Marcas | Proteção e Tecnologia</title>
+    
+    <link rel="icon" href="img/icon.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#F0D475',
+                            500: '#D4AF37', 
+                            600: '#B59428', 
+                            700: '#8A701E',
+                        },
+                        dark: {
+                            950: '#050505',
+                        },
+                        light: {
+                            50: '#F9FAFB', 
+                            100: '#F3F4F6', 
+                            200: '#E5E7EB',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'gold': '0 4px 20px -5px rgba(212, 175, 55, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animação Ouro Vivo */
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .text-gradient-anim {
+            background: linear-gradient(90deg, #B59428, #D4AF37, #F0D475, #D4AF37, #8A701E); 
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 3s linear infinite;
+            padding-right: 0.1em; 
+            display: inline-block;
+        }
+        
+        .bg-gradient-anim {
+            background: linear-gradient(45deg, #bf953f, #d4af37, #b38728, #fbf5b7, #bf953f);
+            background-size: 200% 200%;
+            animation: shimmer 4s ease infinite;
+        }
+
+        /* Animação Salto Sequencial */
+        @keyframes sequential-gold-jump {
+            0% { transform: translateY(0) scale(1); border-color: #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+            15% { transform: translateY(-15px) scale(1.03); border-color: #D4AF37; box-shadow: 0 20px 25px -5px rgba(212,175,55,0.3); }
+            30%, 100% { transform: translateY(0) scale(1); border-color: #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        }
+        .step-card { animation: sequential-gold-jump 6s infinite ease-in-out; }
+
+        /* Card Pulo Fixo */
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(-1.5rem); } 
+            50% { transform: translateY(-2.2rem); } 
+        }
+        .card-jump { animation: gentle-bounce 3s infinite ease-in-out; }
+
+        /* Glass */
+        .glass-light {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        /* Fundo Flutuante */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        .float { animation: float 8s ease-in-out infinite; }
+        .float-delayed { animation: float 8s ease-in-out infinite; animation-delay: -4s; }
+
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        /* Modal Animation */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.95); transition: all 0.2s ease-in; }
+    </style>
+</head>
+<body class="bg-light-50 text-gray-800 font-sans overflow-x-hidden selection:bg-gold-500 selection:text-white">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 px-6 border-b border-transparent">
+        <div class="max-w-7xl mx-auto flex justify-between items-center relative">
+            <a href="#" class="flex items-center group relative z-50">
+                <img src="img/logo.svg" alt="Ed Registro de Marcas" class="h-32 md:h-48 -my-10 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md">
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-600">
+                <a href="#inicio" class="hover:text-gold-600 transition-colors">Início</a>
+                <a href="#diferenciais" class="hover:text-gold-600 transition-colors">Diferenciais</a>
+                <a href="#como-funciona" class="hover:text-gold-600 transition-colors">Processo</a>
+                <a href="#planos" class="hover:text-gold-600 transition-colors">Planos</a>
+                <a href="#faq" class="hover:text-gold-600 transition-colors">Dúvidas</a>
+                <button onclick="openModal('consultoria')" class="bg-gradient-anim text-white px-8 py-3 rounded-full font-extrabold hover:scale-105 hover:shadow-gold transition-all duration-300 shadow-md">
+                    CONSULTORIA
+                </button>
+            </div>
+
+            <button onclick="openModal('consultoria')" class="md:hidden text-gold-600 font-bold border border-gold-500 rounded-lg px-4 py-2 text-xs uppercase">
+                WhatsApp
+            </button>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 bg-light-50">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/20 rounded-full blur-[100px] float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gray-200/50 rounded-full blur-[120px] float-delayed"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            <div data-aos="fade-down" data-aos-duration="1000" class="inline-block mb-6 px-4 py-1 rounded-full border border-gold-500/30 bg-white/50 backdrop-blur-sm">
+                <span class="text-[10px] md:text-xs font-bold text-gold-600 uppercase tracking-widest">Proteção Jurídica & Tecnologia</span>
+            </div>
+            
+            <h1 data-aos="fade-up" data-aos-duration="1200" class="text-4xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
+                PROTEJA A <br class="hidden md:block">IDENTIDADE DA <br><span class="text-gradient-anim">SUA EMPRESA.</span>
+            </h1>
+            
+            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200" class="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
+                Especialistas em registro de marcas para PMEs. Unimos a segurança jurídica da advocacia com a agilidade da tecnologia.
+            </p>
+
+            <div data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000" class="glass-light p-2 rounded-2xl max-w-2xl mx-auto flex flex-col md:flex-row gap-2 transition-all hover:border-gold-500/50 shadow-soft hover:shadow-gold">
+                <input type="text" id="brandInput" placeholder="Digite o nome da sua marca..." 
+                    class="flex-1 bg-transparent text-gray-800 px-6 py-4 outline-none placeholder-gray-400 font-medium">
+                <button onclick="searchBrand()" class="bg-gradient-anim text-white font-black px-8 py-4 rounded-xl hover:brightness-110 transition-all uppercase tracking-wide text-sm md:text-base whitespace-nowrap shadow-md">
+                    Verificar Grátis
+                </button>
+            </div>
+            <p class="mt-4 text-gray-400 text-[10px] uppercase tracking-widest font-bold">Pesquisa direta no banco de dados do INPI</p>
+        </div>
+    </section>
+
+    <section id="diferenciais" class="py-24 bg-white border-y border-gray-100">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
+            <div data-aos="fade-up" data-aos-delay="0" class="p-8 rounded-3xl bg-light-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gold-200 group">
+                <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition duration-500">⚖️</div>
+                <h3 class="text-gray-900 font-bold text-lg mb-3">Assessoria Jurídica</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Corpo jurídico especializado para lidar com indeferimentos e recursos.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100" class="p-8 rounded-3xl bg-white shadow-gold hover:shadow-gold-lg transition-all duration-300 border border-gold-100 group">
+                <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition duration-500">🚀</div>
+                <h3 class="text-gray-900 font-bold text-lg mb-3">Agilidade Tecnológica</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Processos otimizados para protocolo rápido, evitando que outros registrem na frente.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200" class="p-8 rounded-3xl bg-light-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gold-200 group">
+                <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition duration-500">📍</div>
+                <h3 class="text-gray-900 font-bold text-lg mb-3">Foco em Pernambuco</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Entendemos a realidade das pequenas e médias empresas da nossa região.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="py-24 relative overflow-hidden bg-light-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tighter">Como Funciona</h2>
+                <p class="text-gold-600 font-bold text-xs uppercase tracking-[0.3em]">Procedimento Interno Simplificado</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 relative z-10">
+                <div style="animation-delay: 0s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
+                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">01</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Análise</h3>
+                    <p class="text-sm text-gray-500">Verificamos a disponibilidade do nome e do logotipo no INPI.</p>
+                </div>
+                <div style="animation-delay: 1.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
+                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">02</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Contrato</h3>
+                    <p class="text-sm text-gray-500">Assinatura digital e pagamento facilitado da entrada.</p>
+                </div>
+                <div style="animation-delay: 3s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
+                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">03</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Protocolo</h3>
+                    <p class="text-sm text-gray-500">Entrada no pedido em até 3 dias úteis após a assinatura.</p>
+                </div>
+                <div style="animation-delay: 4.5s;" class="step-card bg-white p-8 rounded-3xl border border-gray-200">
+                    <span class="text-6xl font-black text-gray-100 absolute top-4 right-4">04</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Concessão</h3>
+                    <p class="text-sm text-gray-500">Acompanhamos todo o processo até a entrega do certificado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tighter">Nossos Pacotes</h2>
+                <p class="text-gray-400 font-bold text-xs uppercase tracking-[0.3em]">Escolha o plano ideal para sua empresa</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+                <div data-aos="fade-up" data-aos-delay="0" class="bg-light-50 rounded-3xl p-8 border border-gray-200 flex flex-col hover:border-gold-400 transition-all duration-300">
+                    <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg font-bold text-center mb-6 tracking-widest text-sm uppercase">Básico</div>
+                    <div class="text-center mb-8">
+                        <div class="text-4xl font-black text-gray-900">R$ 890,00</div>
+                        <div class="text-sm text-gray-500 font-bold mt-2">ou 4x de R$ 220,00</div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-600 flex-1 mb-8">
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Análise de disponibilidade</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Classificação do ramo de atividade</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Análise do logotipo</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Pedido de Registro junto ao INPI</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Acompanhamento da primeira parte</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Informar o primeiro despacho</li>
+                    </ul>
+                    <button onclick="openModal('plan', 'Básico')" class="w-full py-4 rounded-xl border border-gold-500 text-gold-600 font-bold hover:bg-gold-500 hover:text-white transition uppercase text-sm tracking-wide">Contratar Básico</button>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="100" class="card-jump bg-white rounded-3xl p-8 border-2 border-gold-500 shadow-gold flex flex-col relative z-10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-anim text-white font-black px-6 py-2 rounded-full text-xs uppercase tracking-widest shadow-lg">Mais Vantajoso</div>
+                    <div class="text-gold-600 py-2 px-4 font-bold text-center mb-6 tracking-widest text-sm uppercase mt-4">Intermediário</div>
+                    <div class="text-center mb-8">
+                        <div class="text-5xl font-black text-gray-900">R$ 1.590,00</div>
+                        <div class="text-sm text-gray-500 font-bold mt-2">ou 6x de R$ 265,00</div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-700 flex-1 mb-8 font-medium">
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Análise de disponibilidade</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Classificação do ramo de atividade</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Análise do logotipo</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Pedido de Registro junto ao INPI</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> <b>Acompanhamento até a concessão</b></li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> <b>Cumprimento de exigências</b></li>
+                    </ul>
+                    <button onclick="openModal('plan', 'Intermediário')" class="w-full py-5 rounded-xl bg-gradient-anim text-white font-black hover:brightness-110 hover:shadow-lg transition uppercase text-sm tracking-wide transform hover:scale-105">Contratar Intermediário</button>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-light-50 rounded-3xl p-8 border border-gray-200 flex flex-col hover:border-gold-400 transition-all duration-300">
+                    <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg font-bold text-center mb-6 tracking-widest text-sm uppercase">Premium</div>
+                    <div class="text-center mb-8">
+                        <div class="text-4xl font-black text-gray-900">R$ 2.490,00</div>
+                        <div class="text-sm text-gray-500 font-bold mt-2">ou 8x de R$ 310,00</div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-600 flex-1 mb-8">
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Análise de disp. marca e logotipo</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Classificação do ramo de atividade</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Pedido de registro junto ao INPI</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> <b>02 anos de monitoramento</b></li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Assessoria completa até certificado</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Recursos/Oposições ilimitados</li>
+                        <li class="flex items-start"><span class="text-gold-600 mr-3">✓</span> Notificações Extrajudiciais ilimitadas</li>
+                    </ul>
+                    <button onclick="openModal('plan', 'Premium')" class="w-full py-4 rounded-xl border border-gold-500 text-gold-600 font-bold hover:bg-gold-500 hover:text-white transition uppercase text-sm tracking-wide">Contratar Premium</button>
+                </div>
+            </div>
+            
+            <p class="text-center mt-12 text-gray-400 text-[10px] uppercase font-bold tracking-[0.2em]">
+                Taxa de protocolo do INPI (R$ 212,00) não inclusa nos valores acima.
+            </p>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-light-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tighter">Dúvidas Frequentes</h2>
+                <p class="text-gray-400 font-bold text-xs uppercase tracking-[0.3em]">Transparência total</p>
+            </div>
+            
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl border border-gray-200 open:border-gold-500 transition-all duration-300 shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-800 uppercase text-xs md:text-sm tracking-wide">
+                        <span>O CNPJ não protege minha marca?</span>
+                        <span class="text-gold-500 text-xl transform group-open:rotate-180 transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                        Não. O CNPJ protege apenas a Razão Social na Junta Comercial do seu estado. A marca (o nome que o público vê) só tem proteção nacional e exclusividade garantida através do registro no INPI.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl border border-gray-200 open:border-gold-500 transition-all duration-300 shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-800 uppercase text-xs md:text-sm tracking-wide">
+                        <span>Qual a diferença entre marca e logotipo?</span>
+                        <span class="text-gold-500 text-xl transform group-open:rotate-180 transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                        A marca nominativa protege a palavra (o nome). A marca mista protege a palavra junto com o logotipo (desenho/forma). Nossos planos Intermediário e Premium incluem a análise de ambos.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl border border-gray-200 open:border-gold-500 transition-all duration-300 shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-800 uppercase text-xs md:text-sm tracking-wide">
+                        <span>O que acontece se negarem meu pedido?</span>
+                        <span class="text-gold-500 text-xl transform group-open:rotate-180 transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                        O indeferimento pode ocorrer. Por isso, a assessoria jurídica é vital. No plano Premium, incluímos recursos ilimitados para defender seu direito caso o INPI negue inicialmente o pedido.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl border border-gray-200 open:border-gold-500 transition-all duration-300 shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-800 uppercase text-xs md:text-sm tracking-wide">
+                        <span>O que é a taxa de R$ 212,00?</span>
+                        <span class="text-gold-500 text-xl transform group-open:rotate-180 transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                        É a taxa federal (GRU) para micro e pequenas empresas, paga diretamente ao governo para iniciar o processo. Não ficamos com esse valor; ele é repassado ao INPI.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-950 py-16 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center mb-8">
+                <img src="img/logo.svg" alt="Ed Registro de Marcas" class="h-20 md:h-28 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity duration-300">
+            </div>
+            
+            <p class="text-gray-500 text-[10px] uppercase font-bold tracking-[0.3em] mb-12">Recife • Petrolina • Brasil</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <a href="https://www.instagram.com/edregistrodemarca?igsh=dGVxanJyeHRjbG5i" target="_blank" class="flex items-center gap-3 px-6 py-3 border border-gray-700 rounded-full text-gray-300 hover:border-gold-500 hover:text-gold-500 transition-all group w-64 justify-center">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">Instagram</span>
+                </a>
+
+                <button onclick="openModal('consultoria')" class="flex items-center gap-3 px-6 py-3 bg-green-600 rounded-full text-white hover:bg-green-500 transition-all w-64 justify-center shadow-lg shadow-green-900/20">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">WhatsApp</span>
+                </button>
+
+                <a href="mailto:Edregistrodemarca@gmail.com" class="flex items-center gap-3 px-6 py-3 bg-white border border-gold-500 rounded-full text-gold-600 hover:bg-gold-500 hover:text-white transition-all group w-64 justify-center shadow-lg shadow-gold-500/10">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">Enviar E-mail</span>
+                </a>
+            </div>
+
+            <p class="text-gray-600 text-[9px] font-bold uppercase tracking-widest">&copy; 2026 Ed Registro de Marcas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="brandModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-[90%] shadow-2xl border border-gray-100 relative transform transition-all scale-95" id="modalContent">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gold-400/20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">💎</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Qual o nome da marca?</h3>
+                <p class="text-gray-500 text-sm">Digite abaixo para agilizar sua consulta de disponibilidade.</p>
+            </div>
+
+            <input type="text" id="modalInput" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 transition-all font-medium mb-6 text-center text-lg" placeholder="Ex: Minha Loja">
+
+            <button onclick="confirmModal()" class="w-full py-4 bg-gradient-anim text-white font-bold rounded-xl shadow-lg hover:brightness-110 hover:shadow-gold transition-all transform hover:scale-[1.02] uppercase tracking-wide text-sm">
+                Continuar no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <button onclick="openModal('consultoria')" class="fixed bottom-8 right-8 z-50 bg-green-600 hover:bg-green-500 p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group">
+        <svg class="w-8 h-8 text-white fill-current" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic',
+            delay: 0
+        });
+
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-xl', 'border-gray-100', 'shadow-md');
+                nav.classList.remove('border-transparent', 'py-6');
+                nav.classList.add('py-4');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-xl', 'border-gray-100', 'shadow-md', 'py-4');
+                nav.classList.add('border-transparent', 'py-6');
+            }
+        });
+
+        // ==========================================
+        // CONFIGURAÇÃO DO WHATSAPP (COLOQUE O NÚMERO AQUI)
+        const whatsappNumber = "5581991849549"; 
+        // ==========================================
+
+        let currentAction = '';
+        let currentPlanName = '';
+
+        // Funções do Modal
+        function openModal(action, planName = '') {
+            currentAction = action;
+            currentPlanName = planName;
+            
+            const modal = document.getElementById('brandModal');
+            const content = document.getElementById('modalContent');
+            const input = document.getElementById('modalInput');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+
+            input.focus();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('brandModal');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function confirmModal() {
+            const brandName = document.getElementById('modalInput').value.trim();
+            let msg = '';
+
+            if (currentAction === 'search') {
+                if (!brandName) { alert('Por favor, digite o nome da marca.'); return; }
+                msg = `Olá! Vim pelo site e gostaria de saber se a marca *${brandName.toUpperCase()}* está disponível para registro.`;
+            
+            } else if (currentAction === 'plan') {
+                if (brandName) {
+                    msg = `Olá! Tenho interesse no pacote *${currentPlanName}* para a marca *${brandName.toUpperCase()}*. Como funcionam os próximos passos?`;
+                } else {
+                    msg = `Olá! Tenho interesse no pacote *${currentPlanName}*. Poderia me dar mais detalhes?`;
+                }
+
+            } else { // Consultoria Geral
+                if (brandName) {
+                    msg = `Olá! Gostaria de uma consultoria para registrar a marca *${brandName.toUpperCase()}*.`;
+                } else {
+                    msg = "Olá! Gostaria de uma consultoria sobre registro de marcas.";
+                }
+            }
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+            closeModal();
+            document.getElementById('modalInput').value = ''; // Limpa o campo
+        }
+
+        // Intercepta o Enter no Input
+        document.getElementById('modalInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                confirmModal();
+            }
+        });
+
+        // Função da Busca Principal (Hero Section)
+        function searchBrand() {
+            const val = document.getElementById('brandInput').value;
+            if(val) {
+                // Se já digitou no input grande, manda direto
+                const msg = `Olá! Vim pelo site e gostaria de saber se a marca *${val.toUpperCase()}* está disponível para registro.`;
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+            } else {
+                // Se não digitou, abre o modal
+                openModal('search');
+            }
+        }
+    </script>
+</body>
+</html>
